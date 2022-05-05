@@ -24,7 +24,7 @@ h1 {
     text-align: center;
 }
 
-h1, form label, form button, form input {
+h1, form label, form button, form input, form span {
     font-family: 'Karla', sans-serif;
 }
 
