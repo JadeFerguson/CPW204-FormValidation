@@ -6,6 +6,12 @@ function main() {
     resetErrorMessages();
     isTextPresent("first-name", "First name is required");
     isTextPresent("last-name", "Last name is required");
+    var dobBox = document.getElementById("dob");
+    var dob = dobBox.value;
+    if (!isValidDate(dob)) {
+        var errSpan = dobBox.nextElementSibling;
+        errSpan.innerHTML = "Format should be mm/dd/yyyy";
+    }
 }
 function resetErrorMessages() {
     var allSpans = document.querySelectorAll("form span");
@@ -18,6 +24,10 @@ function resetErrorMessages() {
             currSpan.innerText = "";
         }
     }
+}
+function isValidDate(input) {
+    var pattern = /^\d{1,2}\/\d{1,2}\/\d{4}$/g;
+    return pattern.test(input);
 }
 function isTextPresent(id, errMsg) {
     var txtBox = document.getElementById(id);
