@@ -4,11 +4,40 @@ window.onload = function() {
 }
 
 function main():void {
+    // Create element lets us create a html element
+    let messageHeading = document.createElement("h2");
+    messageHeading.innerText = "Processing form";
+    messageHeading.setAttribute("class", "message");
+    messageHeading.onclick = changeHeading;
+
+    let h1 = document.querySelector("h1");
+    h1.insertAdjacentElement("afterend", messageHeading); // inserting after h1
+
+    // timer for processing to go away
+    setTimeout(function() {
+        messageHeading.remove();
+    }, 20000);
+
     resetErrorMessages();
     isTextPresent("first-name", "First name is required");
     isTextPresent("last-name", "Last name is required");
 
     checkValidDate();
+}
+
+/**
+ * Change the message heading to a random color
+ * when it is clicked
+ */
+function changeHeading() {
+    let heading = <HTMLElement>this;
+    let red = Math.floor(Math.random() * 225 + 1);
+    let green = Math.floor(Math.random() * 225 + 1);
+    let blue = Math.floor(Math.random() * 225 + 1);
+    let color = "rgb(" + red + "," + green + "," + blue +")";
+    console.log(color);
+    heading.style.color = color;
+    console.log(heading.style.color);
 }
 
 function checkValidDate() {

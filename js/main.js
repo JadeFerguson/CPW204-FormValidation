@@ -3,10 +3,29 @@ window.onload = function () {
     formBtn.onclick = main;
 };
 function main() {
+    var messageHeading = document.createElement("h2");
+    messageHeading.innerText = "Processing form";
+    messageHeading.setAttribute("class", "message");
+    messageHeading.onclick = changeHeading;
+    var h1 = document.querySelector("h1");
+    h1.insertAdjacentElement("afterend", messageHeading);
+    setTimeout(function () {
+        messageHeading.remove();
+    }, 20000);
     resetErrorMessages();
     isTextPresent("first-name", "First name is required");
     isTextPresent("last-name", "Last name is required");
     checkValidDate();
+}
+function changeHeading() {
+    var heading = this;
+    var red = Math.floor(Math.random() * 225 + 1);
+    var green = Math.floor(Math.random() * 225 + 1);
+    var blue = Math.floor(Math.random() * 225 + 1);
+    var color = "rgb(" + red + "," + green + "," + blue + ")";
+    console.log(color);
+    heading.style.color = color;
+    console.log(heading.style.color);
 }
 function checkValidDate() {
     var dobBox = document.getElementById("dob");

@@ -44,6 +44,10 @@ form button {
     margin-left: 50%;
 }
 
+.message {
+    font-style: italic;
+}
+
 @media only screen and (max-width: 475px) {
     form label {
         text-align: left;
